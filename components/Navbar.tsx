@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import logo from "@/public/next.svg";
+import logo from "@/public/logo.png";
 import Image from "next/image";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
@@ -37,7 +37,13 @@ const Navbar: React.FC = () => {
       <nav className="px-9 flex justify-between items-center w-screen sm:w-[80%] mx-[auto] my-0 h-20 ">
         <Link href="/">
           <div className="flex items-center text-xl font-bold">
-            <Image src={logo} alt="logo" height={70} width={70} />
+            <Image
+              src={logo}
+              alt="logo"
+              height={50}
+              width={50}
+              className="rounded-lg h-[40px] w-[40px] sm:h-[40px] sm:w-[40px]"
+            />
           </div>
         </Link>
 
