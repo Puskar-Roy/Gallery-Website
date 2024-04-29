@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
             ) : (
               <li
                 onClick={() => signIn("google")}
-                className="bg-rose-500 hover:bg-rose-800 rounded-xl px-4 py-2 text-white"
+                className="bg-rose-500 cursor-pointer hover:bg-rose-800 rounded-xl px-4 py-2 text-white"
               >
                 Sign in / Sign up
               </li>
@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
             ) : (
               <li
                 onClick={() => signIn("google")}
-                className="bg-rose-500 hover:bg-rose-800 rounded-xl px-4 py-2 text-white"
+                className="bg-rose-500 cursor-pointer hover:bg-rose-800 rounded-xl px-4 py-2 text-white"
               >
                 Sign in / Sign up
               </li>
