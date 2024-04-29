@@ -14,7 +14,7 @@ export function CarouselDemo() {
   return (
     <Carousel className="w-full max-w-xs sm:max-w-[70rem]">
       <CarouselContent>
-        <CarouselItem className="basic-1/3 sm:basis-1/5">
+        <CarouselItem className="basic-1/3 sm:basis-1/4">
           <div className="p-1">
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -23,7 +23,7 @@ export function CarouselDemo() {
             </Card>
           </div>
         </CarouselItem>
-        <CarouselItem className="basic-1/3 sm:basis-1/5">
+        <CarouselItem className="basic-1/3 sm:basis-1/4">
           <div className="p-1">
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -32,7 +32,7 @@ export function CarouselDemo() {
             </Card>
           </div>
         </CarouselItem>
-        <CarouselItem className="basic-1/3 sm:basis-1/5">
+        <CarouselItem className="basic-1/3 sm:basis-1/4">
           <div className="p-1">
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -41,7 +41,7 @@ export function CarouselDemo() {
             </Card>
           </div>
         </CarouselItem>
-        <CarouselItem className="basic-1/3 sm:basis-1/5">
+        <CarouselItem className="basic-1/3 sm:basis-1/4">
           <div className="p-1">
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -50,7 +50,7 @@ export function CarouselDemo() {
             </Card>
           </div>
         </CarouselItem>
-        <CarouselItem className="basic-1/3 sm:basis-1/5">
+        <CarouselItem className="basic-1/3 sm:basis-1/4">
           <div className="p-1">
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
