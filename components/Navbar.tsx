@@ -1,15 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import logo from "@/public/logo.png";
+// import logo from "@/logo.png";
 import Image from "next/image";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
 import { NavbarData } from "@/utlis/data";
 import { NavbarItems } from "@/interfaces";
-import logo1 from '@/public/profilepic.jpeg'
+// import logo1 from "@/profilepic.jpeg";
 import { ModeToggle } from "./Theme-Button";
-
+import { signIn, useSession, signOut } from "next-auth/react";
 
 const NavItem = ({ href, tags, onClick }: NavbarItems) => {
   return (
@@ -21,11 +21,10 @@ const NavItem = ({ href, tags, onClick }: NavbarItems) => {
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [openp, setOpenp] = useState<boolean>(false);
-  const status = "authenticated";
- 
-  const signOut: () => void = () => {
-    window.alert("Signout")
-  };
+  const session = useSession();
+
+  console.log(session);
+
   const handleProfClick: () => void = () => {
     setOpenp(!openp);
   };
@@ -38,7 +37,7 @@ const Navbar: React.FC = () => {
         <Link href="/">
           <div className="flex items-center text-xl font-bold">
             <Image
-              src={logo}
+              src={require("@/public/logo.png")}
               alt="logo"
               height={50}
               width={50}
@@ -65,7 +64,7 @@ const Navbar: React.FC = () => {
           }
         >
           <ul className="flex flex-col gap-[30px]">
-            {status === "authenticated" ? (
+            {session.status === "authenticated" ? (
               NavbarData.map(({ href, tags }: NavbarItems) => (
                 <NavItem
                   key={href}
@@ -75,27 +74,26 @@ const Navbar: React.FC = () => {
                 />
               ))
             ) : (
-              <Link
-                onClick={handleMenuClick}
-                href="/authentication"
+              <li
+                onClick={() => signIn("google")}
                 className="bg-rose-500 hover:bg-rose-800 rounded-xl px-4 py-2 text-white"
               >
                 Sign in / Sign up
-              </Link>
+              </li>
             )}
-            {status === "authenticated" && (
+            {session.status === "authenticated" && (
               <div
                 onClick={handleProfClick}
                 className="flex gap-2 font-bold text-rose-500 items-center cursor-pointer"
               >
                 <Image
-                  src={logo1}
+                  src={session.data.user?.image || require("@/public/logo.png")}
                   alt="Logo"
                   height={22}
                   width={25}
                   className="rounded-[100%] shadow-xl"
                 />
-                <h3>Puskar</h3>
+                <h3>{session.data.user?.name}</h3>
               </div>
             )}
           </ul>
@@ -137,7 +135,7 @@ const Navbar: React.FC = () => {
         </ul>
         <div className="hidden sm:block">
           <ul className="flex gap-[30px]">
-            {status === "authenticated" ? (
+            {session.status === "authenticated" ? (
               NavbarData.map(({ href, tags }: NavbarItems) => (
                 <NavItem
                   key={href}
@@ -147,27 +145,26 @@ const Navbar: React.FC = () => {
                 />
               ))
             ) : (
-              <Link
-                onClick={handleMenuClick}
-                href="/authentication"
+              <li
+                onClick={() => signIn("google")}
                 className="bg-rose-500 hover:bg-rose-800 rounded-xl px-4 py-2 text-white"
               >
                 Sign in / Sign up
-              </Link>
+              </li>
             )}
-            {status === "authenticated" && (
+            {session.status === "authenticated" && (
               <div
                 onClick={handleProfClick}
                 className="flex gap-2 font-bold text-rose-500 items-center justify-center  cursor-pointer"
               >
                 <Image
-                  src={logo1}
+                  src={session.data.user?.image || require("@/public/logo.png")}
                   alt="Logo"
                   height={22}
                   width={25}
                   className="rounded-[100%] shadow-xl"
                 />
-                <h3>Puskar</h3>
+                <h3>{session.data.user?.name}</h3>
               </div>
             )}
           </ul>
