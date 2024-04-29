@@ -49,9 +49,9 @@ const Navbar: React.FC = () => {
 
         <div className="sm:hidden" onClick={handleMenuClick}>
           {open ? (
-            <IoMdClose className="text-2xl" />
+            <IoMdClose className="text-[2rem]" />
           ) : (
-            <CgMenuRightAlt className="text-2xl" />
+            <CgMenuRightAlt className="text-[2rem]" />
           )}
         </div>
         <div className="absolute right-20 z-5">
