@@ -1,5 +1,5 @@
 "use client";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CarouselDemo } from "@/components/Coursol";
 import { Alata } from "next/font/google";
 import { ImageGallery } from "react-image-grid-gallery";
@@ -18,7 +18,6 @@ export default function Home() {
         const response = await axios.get("/api/servers");
         setImages(response.data.data);
         console.log(response.data.data);
-        
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -38,12 +37,22 @@ export default function Home() {
           </div>
           <h1 className={`text-4xl font-semibold ${alata.className}`}>
             Wall <span className={`text-rose-500 font-bold`}>Gallery</span>
-          </h1>{images ?<ImageGallery
-            imagesInfoArray={images}
-            columnWidth={330}
-            gapSize={24}
-          />: <p>Loading...</p> }
-          
+          </h1>
+          {images.length === 0 && (
+            <h1 className={`text-xl font-semibold ${alata.className}`}>
+              No Images{" "}
+              <span className={`text-rose-500 font-bold`}>Available</span>
+            </h1>
+          )}
+          {images ? (
+            <ImageGallery
+              imagesInfoArray={images}
+              columnWidth={330}
+              gapSize={24}
+            />
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </div>
     </main>
