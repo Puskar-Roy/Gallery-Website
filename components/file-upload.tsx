@@ -8,6 +8,9 @@ import Image from "next/image";
 
 const Fileupload = ({ value, onChange, endpoint }: FileUploadProps) => {
   const fileType = value?.split(".").pop();
+  if (fileType == "heic"){
+    throw new Error("File Not Supported")
+  }
   if (value && fileType !== "pdf")
     return (
       <div className="relative h-20 w-20">

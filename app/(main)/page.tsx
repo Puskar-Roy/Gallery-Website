@@ -4,6 +4,7 @@ import { CarouselDemo } from "@/components/Coursol";
 import { Alata } from "next/font/google";
 import { ImageGallery } from "react-image-grid-gallery";
 import axios from "axios";
+import Image from "next/image";
 const alata = Alata({
   weight: "400",
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function Home() {
           ) : (
             <p>Loading...</p>
           )}
+          
         </div>
       </div>
     </main>
