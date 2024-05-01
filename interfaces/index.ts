@@ -1,4 +1,3 @@
-
 export interface NavbarItems {
   href: string;
   tags: string;
@@ -9,4 +8,10 @@ export interface FileUploadProps {
   onChange: (url?: string) => void;
   value: string;
   endpoint: "messageFile" | "serverImage";
+}
+
+export interface Users {
+  email: string;
+  image: string;
+  name: string;
 }
