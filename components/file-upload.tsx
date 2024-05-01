@@ -9,7 +9,7 @@ import Image from "next/image";
 const Fileupload = ({ value, onChange, endpoint }: FileUploadProps) => {
   const fileType = value?.split(".").pop();
   if (fileType == "heic"){
-    throw new Error("File Not Supported")
+    alert("heic File Format is not supported!")
   }
   if (value && fileType !== "pdf")
     return (
