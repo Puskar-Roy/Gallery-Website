@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import {
   Dialog,
   DialogContent,
@@ -32,7 +33,7 @@ const formSchema = z.object({
     message: "PlayGround Name Is Required!",
   }),
   imageUrl: z.string().min(1, {
-    message: "PlayGround Image Is Required!",
+    message: "Image Is Required!",
   }),
 });
 
@@ -49,12 +50,17 @@ const Dialogbox = () => {
       imageUrl: "",
     },
   });
-
+  const session = useSession();
   const isLoading = form.formState.isSubmitting;
 
   const detailsOnSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post("/api/servers", values);
+      console.log(values);
+      await axios.post("/api/servers", {
+        caption: values.name,
+        src: values.imageUrl,
+        author: session.data?.user?.email,
+      });
       form.reset();
       router.refresh();
       window.location.reload();

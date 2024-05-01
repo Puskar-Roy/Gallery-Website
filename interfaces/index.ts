@@ -15,3 +15,8 @@ export interface Users {
   image: string;
   name: string;
 }
+export interface Images {
+  author: string;
+  src: string;
+  caption?: string;
+}

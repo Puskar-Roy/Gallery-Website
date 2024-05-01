@@ -1,8 +1,9 @@
 "use client";
+import { useState , useEffect } from "react";
 import { CarouselDemo } from "@/components/Coursol";
 import { Alata } from "next/font/google";
 import { ImageGallery } from "react-image-grid-gallery";
-import { images } from "@/utlis/data";
+import axios from "axios";
 const alata = Alata({
   weight: "400",
   subsets: ["latin"],
@@ -10,6 +11,21 @@ const alata = Alata({
 });
 
 export default function Home() {
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/servers");
+        setImages(response.data.data);
+        console.log(response.data.data);
+        
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <main className="mt-[100px]">
       <div className="w-[85%] mx-auto">
