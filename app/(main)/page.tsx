@@ -38,12 +38,12 @@ export default function Home() {
           </div>
           <h1 className={`text-4xl font-semibold ${alata.className}`}>
             Wall <span className={`text-rose-500 font-bold`}>Gallery</span>
-          </h1>
-          <ImageGallery
+          </h1>{images ?<ImageGallery
             imagesInfoArray={images}
             columnWidth={330}
             gapSize={24}
-          />
+          />: <p>Loading...</p> }
+          
         </div>
       </div>
     </main>
