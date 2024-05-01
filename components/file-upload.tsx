@@ -5,11 +5,13 @@ import { UploadDropzone } from "@/utlis/uploadthing";
 import "@uploadthing/react/styles.css";
 import { X } from "lucide-react";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 const Fileupload = ({ value, onChange, endpoint }: FileUploadProps) => {
+    const router = useRouter();
   const fileType = value?.split(".").pop();
   if (fileType == "heic"){
     alert("heic File Format is not supported!")
+    router.refresh();
   }
   if (value && fileType !== "pdf")
     return (
