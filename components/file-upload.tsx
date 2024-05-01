@@ -11,7 +11,7 @@ const Fileupload = ({ value, onChange, endpoint }: FileUploadProps) => {
   const fileType = value?.split(".").pop();
   if (fileType == "heic"){
     alert("heic File Format is not supported!")
-    router.refresh();
+    router.push("/upload");
   }
   if (value && fileType !== "pdf")
     return (
