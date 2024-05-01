@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Fileupload from "./file-upload";
 // import Fileupload from "@/components/file-upload";
 
 const formSchema = z.object({
@@ -92,11 +93,11 @@ const Dialogbox = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        {/* <Fileupload
+                        <Fileupload
                           endpoint="serverImage"
                           onChange={field.onChange}
                           value={field.value}
-                        /> */}
+                        />
                       </FormControl>
                     </FormItem>
                   )}

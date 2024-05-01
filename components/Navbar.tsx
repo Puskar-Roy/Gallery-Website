@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
               : "sm:hidden absolute top-0 left-[-100%] h-screen w-[300px] flex justify-center items-center  backdrop-blur-[1px] rounded-2xl transition-all duration-900 shadow-lg"
           }
         >
-          <ul className="flex flex-col gap-[30px]">
+          <ul className="flex flex-col gap-[30px] ">
             {session.status === "authenticated" ? (
               NavbarData.map(({ href, tags }: NavbarItems) => (
                 <NavItem
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                   key={href}
                   href={href}
                   tags={tags}
-                  onClick={handleMenuClick}
+                  
                 />
               ))
             ) : (
