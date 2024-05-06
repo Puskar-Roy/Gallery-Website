@@ -5,6 +5,7 @@ import { Alata } from "next/font/google";
 import { ImageGallery } from "react-image-grid-gallery";
 import axios from "axios";
 import Image from "next/image";
+import Loder from "@/components/Loder";
 const alata = Alata({
   weight: "400",
   subsets: ["latin"],
@@ -13,14 +14,17 @@ const alata = Alata({
 
 export default function Home() {
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get("/api/servers");
         setImages(response.data.data);
-        console.log(response.data.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching images:", error);
+        setLoading(false);
       }
     };
 
@@ -39,12 +43,8 @@ export default function Home() {
           <h1 className={`text-4xl font-semibold ${alata.className}`}>
             Wall <span className={`text-rose-500 font-bold`}>Gallery</span>
           </h1>
-          {images.length === 0 && (
-            <h1 className={`text-xl font-semibold ${alata.className}`}>
-              No Images{" "}
-              <span className={`text-rose-500 font-bold`}>Available</span>
-            </h1>
-          )}
+          
+          {loading ? <Loder /> : null}
           {images ? (
             <ImageGallery
               imagesInfoArray={images}
@@ -54,7 +54,6 @@ export default function Home() {
           ) : (
             <p>Loading...</p>
           )}
-          
         </div>
       </div>
     </main>

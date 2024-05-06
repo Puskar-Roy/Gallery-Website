@@ -44,15 +44,6 @@ export function CarouselDemo() {
           <div className="p-1">
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
-                <Image src={pic3} height={600} width={600} alt="Logo" />
-              </CardContent>
-            </Card>
-          </div>
-        </CarouselItem>
-        <CarouselItem className="basic-1/3 sm:basis-1/4">
-          <div className="p-1">
-            <Card>
-              <CardContent className="flex aspect-square items-center justify-center p-6">
                 <Image src={logo} height={600} width={600} alt="Logo" />
               </CardContent>
             </Card>
